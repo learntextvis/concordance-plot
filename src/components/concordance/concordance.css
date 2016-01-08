@@ -1,0 +1,10 @@
+/*
+  Component styles. For the moment these should all be
+  manually namespaced so as to not be global styles.
+*/
+
+.concordance {
+  background-color: tan;
+  width: 400px;
+  height: 400px;
+}
