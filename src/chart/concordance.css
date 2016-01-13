@@ -1,0 +1,9 @@
+.concordance-line {
+  stroke: steelblue;
+}
+
+.concordance-background {
+  stroke: #ddd;
+  stroke-width: 3;
+  fill: none;
+}

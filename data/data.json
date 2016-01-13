@@ -1,5 +1,14 @@
 [
   {
-    "value": 5
+    "id":"alice.txt",
+    "name":"Alice in Wonderland",
+    "text":"",
+    "tokens":["hell","handbag","in","a"]
+  },
+  {
+    "id":"alice.txt",
+    "name":"Alice in Wonderland 2222",
+    "text":"",
+    "tokens":["hell","handbag","in","a"]
   }
 ]

@@ -9,11 +9,18 @@ import '../index.html';
 import data from '../data/data.json';
 import config from '../data/config.json';
 
+function renderConcordance(d,i) {
+  return <Concordance
+    key={i}
+    config={config}
+    match={config.match}
+    data={d} />;
+}
+
 document.addEventListener("DOMContentLoaded", function() {
   ReactDOM.render(
-    <Concordance
-      config={config}
-      data={data[0]}
-    />,
+    <div>
+      {data.map(function(d,i) { return renderConcordance(d,i); })}
+    </div>,
     document.querySelector("#main"));
 });
