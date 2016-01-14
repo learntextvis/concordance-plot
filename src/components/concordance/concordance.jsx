@@ -8,7 +8,7 @@ import './concordance.css';
   componentDidMount() {
     this.chart = new Concordance({
       container: this.refs.plot,
-      width: 400,
+      width: 600,
       height: 80
     });
 
@@ -25,7 +25,7 @@ import './concordance.css';
   render() {
     return (
       <div className='concordance'>
-        <p>{this.props.data.name}</p>
+        <p className='concordance-title'>{this.props.data.name}</p>
         <div ref='plot' className="concordance-plot"></div>
       </div>
     );

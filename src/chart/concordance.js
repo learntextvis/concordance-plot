@@ -1,7 +1,5 @@
 import d3 from 'd3';
 
-import './concordance.css';
-
 export default class Concordance {
   constructor(opts) {
     this.opts = opts;

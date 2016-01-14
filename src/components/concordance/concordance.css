@@ -3,7 +3,22 @@
   manually namespaced so as to not be global styles.
 */
 
-.concordance {
-  /*width: 400px;
-  height: 80px;*/
+.concordance-title {
+  padding:10px 0 2px 0;
+  margin:0;
+
+}
+
+.concordance-line {
+  stroke: steelblue;
+}
+
+.concordance-line.highlight {
+  stroke: orange;
+}
+
+.concordance-background {
+  stroke: #ddd;
+  stroke-width: 3;
+  fill: none;
 }

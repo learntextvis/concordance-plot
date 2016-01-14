@@ -6,6 +6,9 @@ import Search from '../search/search.jsx';
 import data from '../../../data/data.json';
 import config from '../../../data/config.json';
 
+import './normalize.css';
+import './app.css';
+
 export default class App extends React.Component {
   constructor() {
     super();
