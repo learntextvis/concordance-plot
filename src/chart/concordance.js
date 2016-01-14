@@ -5,7 +5,7 @@ import './concordance.css';
 export default class Concordance {
   constructor(opts) {
     this.opts = opts;
-    this._container = opts.container;;
+    this._container = opts.container;
     this.container = d3.select(this._container);
 
     this.width = this.opts.width;
@@ -39,6 +39,16 @@ export default class Concordance {
       .attr('height', this.height);
   }
 
+  mouseover() {
+    d3.select(this)
+      .classed("highlight", true);
+  }
+
+  mouseout() {
+    d3.select(this)
+      .classed("highlight", false);
+  }
+
   render(searchTerm) {
     var that = this;
     var g = this.container.select('svg').selectAll('.concordance-lines');
@@ -59,7 +69,9 @@ export default class Concordance {
       .attr("x2", function(d) { return that.xScale(d.index); })
       .attr("y1", 2)
       .attr("y2", this.height - 2)
-      .attr("stroke-width", 1);
+      .attr("stroke-width", 1)
+      .on("mouseover", that.mouseover)
+      .on("mouseout", that.mouseout);
 
     // EXIT
     word.exit()

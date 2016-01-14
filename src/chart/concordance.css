@@ -2,6 +2,10 @@
   stroke: steelblue;
 }
 
+.concordance-line.highlight {
+  stroke: orange;
+}
+
 .concordance-background {
   stroke: #ddd;
   stroke-width: 3;
