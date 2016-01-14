@@ -1,18 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Concordance from '../../chart/concordance';
 
 import './concordance.css';
 
-/**
- * Contains UI for the main configuration options that
- * modify the visualization.
- */
  export default class ConcordanceComponent extends React.Component {
 
   componentDidMount() {
     this.chart = new Concordance({
-      container: ReactDOM.findDOMNode(this),
+      container: this.refs.plot,
       width: 400,
       height: 80
     });
@@ -31,6 +26,7 @@ import './concordance.css';
     return (
       <div className='concordance'>
         <p>{this.props.data.name}</p>
+        <div ref='plot' className="concordance-plot"></div>
       </div>
     );
   }
