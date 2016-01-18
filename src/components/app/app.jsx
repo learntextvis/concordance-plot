@@ -24,16 +24,16 @@ export default class App extends React.Component {
                  });
   }
 
-  updateMatch(newMatch) {
-    config.match = newMatch;
+  updateQuery(newQuery) {
+    config.query = newQuery;
     this.setState({config : config});
   }
 
   render() {
     return (
       <div>
-        <Search updated={this.updateMatch.bind(this)} search={this.state.config.match} />
-        <Concordances data={this.state.data} match={this.state.config.match} config={this.state.config} />
+        <Search updated={this.updateQuery.bind(this)} search={this.state.config.query} />
+        <Concordances data={this.state.data} query={this.state.config.query} config={this.state.config} />
       </div>
     );
   }

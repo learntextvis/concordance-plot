@@ -1,1 +1,4 @@
-{"match":"in"}
+{
+  "query":"out",
+  "relativeSize": true
+}

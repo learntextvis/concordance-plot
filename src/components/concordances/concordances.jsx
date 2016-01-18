@@ -7,12 +7,14 @@ export default class Concordances extends React.Component {
     super();
   }
 
-  renderConcordance(d,i) {
+  renderConcordance(d, i) {
     return (
       <Concordance
           key={i}
+          index={i}
           config={this.props.config}
-          match={this.props.match}
+          query={this.props.query}
+          allData={this.props.data}
           data={d} />
     );
   }
@@ -29,11 +31,11 @@ export default class Concordances extends React.Component {
 Concordances.propTypes = {
   config: React.PropTypes.object.isRequired,
   // Text to search for
-  match: React.PropTypes.string,
+  query: React.PropTypes.string,
   // data object
   data: React.PropTypes.array.isRequired
 };
 
 Concordances.defaultProps = {
-  match: ""
+  query: ""
 };

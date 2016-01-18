@@ -27,7 +27,11 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        exclude: /node_modules/,
+        include: [
+          /node_modules\/keyword_in_context/,
+          /src/,
+          /index.js/
+        ],
         loader: 'babel',
         query: {
           presets: ['react', 'es2015'],

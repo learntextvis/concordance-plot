@@ -22,3 +22,15 @@
   stroke-width: 3;
   fill: none;
 }
+
+.kwik {
+  font-family: sans-serif;
+  font-size: 12px;
+  max-height:300px;
+  max-width: 550px;
+  overflow-y:auto;
+  margin-bottom:30px;
+  background-color: white;
+  padding: 5px 20px 10px 20px;
+  border: 1px solid grey
+}

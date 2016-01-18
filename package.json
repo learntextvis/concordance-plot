@@ -5,11 +5,13 @@
   "main": "src/index.jsx",
   "author": "Jim Vallandingham",
   "license": "MIT",
+  "repository": "https://github.com/learntextvis/concordance-plot",
   "dependencies": {
     "d3": "^3.5.6",
     "lodash": "^3.10.1",
     "react": "^0.14.3",
-    "react-dom": "^0.14.3"
+    "react-dom": "^0.14.3",
+    "keyword-in-context": "git://github.com/learntextvis/keyword-in-context.git "
   },
   "devDependencies": {
     "babel-core": "^6.3.13",
