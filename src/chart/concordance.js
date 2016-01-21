@@ -17,7 +17,7 @@ import d3 from 'd3';
  function findMatches(source, query, caseSensitive) {
    var qLen = query.length;
 
-   if(qLen === 0) {
+   if(qLen < 2) {
      return [];
    }
 
@@ -33,7 +33,7 @@ import d3 from 'd3';
    var matchIndices = [];
    var match;
    while(match = qReg.exec(source)) {
-     matchIndices.push({"token":match[0], "index":qReg.lastIndex});
+     matchIndices.push({"token":match[0], "index":qReg.lastIndex - match[0].length});
    }
 
    return matchIndices;
@@ -113,7 +113,7 @@ export default class Concordance {
 
   render(searchTerm) {
 
-    var matches = findMatches(this.data, searchTerm);
+    var matches = findMatches(this.data, searchTerm, false);
 
     var that = this;
     var g = this.container.select('svg').selectAll('.concordance-lines');

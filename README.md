@@ -1,21 +1,114 @@
-# concordance-plot
+# Concordance Plot
 
-A visualization to show token positions in text
+A visualization that displays the location of search tokens in one or more documents.
 
-## Development
+![Concordance Screenshot](screenshots/screenshot.png)
 
-### Structure
+# Usage
 
-An index.html and index.jsx file provide an example of the component in use. The components main files are found in `src` with the `components` subdirectory as the holder for react components that may or may not wrap a visualization and a `chart` folder for visualization code that is not react specific.
+There are two primary ways to use this component. Via `script` tags, which is suitable for beginners, or as a react component for those more experienced in web development.
 
-React is used as the primary encapsulation of visualization so that there is a clear and unambiguous way to declaratively instantiate them. However the visualization will also provide an API that can allow them to be used directly without react.
+## Via Script Tags
 
-### Dev Workflow
+To use the component via script tags. Download this repository and look in the `dist` folder. There are two files there of particular note
 
-Uses webpack for building and webpack-dev-server during development. These can be accessed via npm scripts
+ - `concordance.js` - The component.
 
-`npm start` - to start the server in dev mode (with a watcher). Go to localhost:8080 when this is running to start execution from index.html. You can change the value in sample_data and refresh to see a change in the vis.
+ - `concordance.deps.js` - The dependencies for the file above split out into a separate file.
 
-`npm run build` - execute the build. Results currently go into a build subfolder and library dependencies are extracted to a .deps file.
+All of these files are minified which may make them hard to read. So they all have corresponding source maps that end in `.map`.
 
-See `webpack.config.js` for details.
+You should copy both these files into your project.
+
+`Sample HTML file — This is your index.html or similar`
+```html
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript" src="./concordance.deps.js"></script>
+  <script type="text/javascript" src="./concordance.js"></script>
+</head>
+
+<body>
+  <div id='main'></div>
+</body>
+
+<script type="text/javascript">
+  // This config can be loaded from an external location using ajax.
+  var config = {
+    "relativeSize": false,
+    "query": ""
+  };
+
+  // The data can be loaded from an external location.
+  var data = [
+    {
+      "name": "Alice in Wonderland" ,
+      "text": "Alice was beginning to get very tired of sitting by her sister"
+    }
+  ];
+
+  // The container we will render our component into.
+  var container = document.querySelector("#main");
+
+  // What is the query text (the keyword we are looking for).
+  var query = 'Alice';
+
+  // Package it all up and call the show function
+  var opts = {
+    config: config,
+    data: data,
+    container: container,
+    query: query
+  }
+  Concordance.show(opts)
+</script>
+</html>
+```
+
+You can open this file in your browser to see it in action, but you will probably want to move to using a webserver, a simple one is the one built into python `python -m SimpleHTTPServer`.
+
+## As a react component
+
+This module is implemented as a react component and can be used as such. Example code below
+
+```jsx
+<Concordances
+  contextSize={config.contextSize}
+  data={data}
+  query={query}
+  limit={config.limit}
+/>
+```
+
+You would most likely get the component via NPM using `npm install keyword-in-context`. Since the project is written in ES6 and React/JSX you will need a build system that can transpile these to ES5. We use *webpack*, see this repo and our webpack.config.js for guidance.
+
+See below for documentation of parameters
+
+# Parameters
+
+ - caseSensitive [Boolean]: Whether search is case sensitive.
+ - contextSize [Integer]: The number of characters to display on either side of the match.
+ - text [String]: The text to search.
+ - query [String]: The text to search for.
+ - limit [Integer] (optional): Max number of matches to render.
+
+# Customization
+
+CSS can be used to customize the display of this component and it is expected that you would use css to customize the component to fit in your context (e.g. constrain the height of the component). See [this stylesheet](src/components/match_with_context/match_with_context.css) for a sense of what styles you can define.
+
+# Dev Workflow
+
+The project is written in ES6/ES2015 with React and JSX and uses webpack for building and webpack-dev-server during development.
+
+ These can be accessed via npm scripts
+
+`npm start` - to start the server in dev mode (with a watcher). Go to localhost:8080/demo.html when this is running to start execution from html.html. You can change the value in sample_data and refresh to see a change in the vis.
+
+`npm run build-fast` - execute the build without minification.
+
+`npm run build-all` - execute the build.
+
+See `webpack.config.js` and `webpack.dev.config.js` for details.

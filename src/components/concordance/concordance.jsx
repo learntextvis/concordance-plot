@@ -1,6 +1,6 @@
 import React from 'react';
 import Concordance from '../../chart/concordance';
-import KeywordInContext from 'keyword-in-context';
+import {KeywordInContext} from 'keyword-in-context';
 
 import './concordance.css';
 
@@ -31,9 +31,7 @@ import './concordance.css';
           <p className='concordance-title'>{this.props.data.name}</p>
           <div ref='plot' className="concordance-plot"></div>
         </div>
-        <div className='kwik'>
-          <KeywordInContext text={this.props.data.text} query={this.props.query} contextSize={30} caseSensitive={true} />
-        </div>
+        <KeywordInContext text={this.props.data.text} query={this.props.query} contextSize={30} caseSensitive={false} />
       </div>
     );
   }

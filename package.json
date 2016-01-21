@@ -2,10 +2,13 @@
   "name": "concordance-plot",
   "version": "0.0.1",
   "description": "A visualization to show token positions in text",
-  "main": "src/index.jsx",
-  "author": "Jim Vallandingham",
+  "keyword": ["text", "visualization", "concordance"],
+  "main": "index.js",
+  "author": "Jim Vallandingham <jim@bocoup.com>",
   "license": "MIT",
   "repository": "https://github.com/learntextvis/concordance-plot",
+  "files": ["dist"],
+  "engines" : { "node" : ">=4.0" },
   "dependencies": {
     "d3": "^3.5.6",
     "lodash": "^3.10.1",
@@ -31,7 +34,9 @@
     "eslint-plugin-react": "^3.11.2"
   },
   "scripts": {
-    "start": "webpack-dev-server --progress --colors",
-    "build": "webpack"
+    "start": "webpack-dev-server --progress --colors --config webpack.dev.config.js",
+    "build-fast": "webpack",
+    "build-all": "webpack --minimize",
+    "build": "webpack --minimize --bundle"
   }
 }

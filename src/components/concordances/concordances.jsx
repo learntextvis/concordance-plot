@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from 'react-dom';
 import Concordance from '../concordance/concordance.jsx';
 
 
@@ -38,4 +39,33 @@ Concordances.propTypes = {
 
 Concordances.defaultProps = {
   query: ""
+};
+
+/**
+ * Helper method for instatiating this method imperatively
+ * (as opposed to declaratively with React.)
+ *
+ * @param  {Object} opts display paramters.
+ * @param  {Object} opts.config
+ * @param  {Array} opts.data
+ * @param  {DOMNode} opts.container
+ * @param  {String} opts.query
+ *
+ */
+Concordances.show = function(opts) {
+  var config = opts.config;
+  var data = opts.data;
+  var query = opts.query;
+  var container = opts.container;
+
+  ReactDOM.render(
+    <div>
+      <Concordances
+        config={config}
+        text={data}
+        query={query}
+      />
+    </div>,
+    container
+  );
 };
